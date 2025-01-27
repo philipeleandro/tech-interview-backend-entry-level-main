@@ -27,5 +27,6 @@ group :development, :test do
   gem 'rubocop-rails', '2.20.2'
 end
 
-group :development do
+group :test do
+  gem 'simplecov', require: false
 end

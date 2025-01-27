@@ -148,6 +148,11 @@ GEM
     et-orbi (1.2.11)
       tzinfo
     eventmachine (1.2.7)
+    factory_bot (6.5.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.4)
+      factory_bot (~> 6.5)
+      railties (>= 5.0.0)
     ffi (1.17.1-aarch64-linux-gnu)
     ffi (1.17.1-aarch64-linux-musl)
     ffi (1.17.1-arm-linux-gnu)
@@ -399,6 +404,7 @@ DEPENDENCIES
   debug
   devise
   devise-api!
+  factory_bot_rails
   guard
   guard-livereload
   pg (~> 1.1)

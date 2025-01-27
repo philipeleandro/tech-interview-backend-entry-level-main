@@ -16,6 +16,9 @@ gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.3'
 gem 'guard'
 gem 'guard-livereload', require: false
 
+gem 'devise'
+gem 'devise-api', github: 'nejdetkadir/devise-api', branch: 'main'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'rspec-rails', '~> 6.1.0'

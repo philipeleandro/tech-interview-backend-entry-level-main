@@ -13,6 +13,9 @@ gem 'redis', '~> 5.2'
 gem 'sidekiq', '~> 7.2', '>= 7.2.4'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.3'
 
+gem 'pry'
+gem 'pry-remote'
+
 gem 'guard'
 gem 'guard-livereload', require: false
 

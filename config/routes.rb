@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  post '/cart/add_item', to: 'carts#add_item'
-  get '/cart', to: 'carts#show_cart'
+  post '/add_item', to: 'carts#add_item'
+  post '/cart/add_item', to: 'carts#update'
+  get '/cart', to: 'carts#show'
+  delete '/cart/:product_id', to: 'carts#delete'
 end

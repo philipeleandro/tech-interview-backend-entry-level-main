@@ -67,11 +67,11 @@ Os endpoints descritos abaixo necessitam de autenticação, então deve-se passa
 ### POST /users/tokens/sign_in
 Use esse endpoint para gerar um token e usa-lo nos headers dos endpoints seguintes
 
-ROTA: `/users/tokens/sign_in`
+POST ROTA: `/users/tokens/sign_in`
 Payload:
 ```js
 {
-    "email": "rd_station_test@test.com"
+    "email": "rd_station_test@test.com",
     "password": "password"
 }
 ```
@@ -90,7 +90,7 @@ Response body:
   }
 ```
 
-Nos casos seguintes, passar a chave Authorization com o valor `Bearer "token"`. Exemplo:
+Nos casos seguintes, passar a chave Authorization nos headers com o valor `Bearer "token"`. Exemplo:
 ```js
   { "Authorization": "Bearer 'token'"} // 'token' é o valor de retorno "token" na requisição da rota `/users/tokens/sign_in`
 ```
@@ -112,7 +112,7 @@ POST ROTA: `/cart`
 Payload:
 ```js
 {
-  "product_id": 345, // id do produto sendo adicionado
+  "product_id": 1, // id do produto sendo adicionado
   "quantity": 2, // quantidade de produto a ser adicionado
 }
 ```
@@ -120,24 +120,17 @@ Payload:
 Response
 ```js
 {
-  "id": 789, // id do carrinho
+  "id": 1, // id do carrinho
   "products": [
     {
-      "id": 645,
+      "id": 1,
       "name": "Nome do produto",
       "quantity": 2,
       "unit_price": 1.99, // valor unitário do produto
       "total_price": 3.98, // valor total do produto
-    },
-    {
-      "id": 646,
-      "name": "Nome do produto 2",
-      "quantity": 2,
-      "unit_price": 1.99,
-      "total_price": 3.98,
-    },
+    }
   ],
-  "total_price": 7.96 // valor total no carrinho
+  "total_price": 3.98 // valor total no carrinho
 }
 ```
 
@@ -149,17 +142,17 @@ GET ROTA: `/cart`
 Response:
 ```js
 {
-  "id": 789, // id do carrinho
+  "id": 1, // id do carrinho
   "products": [
     {
-      "id": 645,
+      "id": 1,
       "name": "Nome do produto",
       "quantity": 2,
       "unit_price": 1.99, // valor unitário do produto
       "total_price": 3.98, // valor total do produto
     },
     {
-      "id": 646,
+      "id": 2,
       "name": "Nome do produto 2",
       "quantity": 2,
       "unit_price": 1.99,
@@ -170,7 +163,7 @@ Response:
 }
 ```
 
-### 3. Alterar a quantidade de produtos no carrinho 
+### 3. Alterar a quantidade de produtos no carrinho
 Um carrinho pode ter _N_ produtos, se o produto já existir no carrinho, apenas a quantidade dele deve ser alterada
 
 POST ROTA: `/cart/add_item`
@@ -178,7 +171,7 @@ POST ROTA: `/cart/add_item`
 Payload
 ```json
 {
-  "product_id": 1230,
+  "product_id": 1,
   "quantity": 1
 }
 ```
@@ -188,14 +181,14 @@ Response:
   "id": 1,
   "products": [
     {
-      "id": 1230,
+      "id": 1,
       "name": "Nome do produto X",
       "quantity": 2, // considerando que esse produto já estava no carrinho
       "unit_price": 7.00, 
       "total_price": 14.00, 
     },
     {
-      "id": 01020,
+      "id": 2,
       "name": "Nome do produto Y",
       "quantity": 1,
       "unit_price": 9.90, 
@@ -211,6 +204,23 @@ Response:
 Criar um endpoint para excluir um produto do do carrinho. 
 
 DELETE ROTA: `/cart/:product_id`
+EX: `http://localhost:3000/cart/1`
+
+Response:
+```json
+{
+  "id": 1,
+  "products": [
+    {
+      "id": 2,
+      "name": "Nome do produto Y",
+      "quantity": 1,
+      "unit_price": 9.90, 
+      "total_price": 9.90, 
+    }
+  ],
+  "total_price": 9.90
+}
 
 
 #### Detalhes adicionais:
@@ -221,6 +231,8 @@ DELETE ROTA: `/cart/:product_id`
 - Certifique-se de que o endpoint lida corretamente com casos em que o carrinho está vazio após a remoção do produto.
 
 ### 5. Excluir carrinhos abandonados
+  Pode ser validado no navegador com a url `http://localhost:3000/sidekiq` e validar que tem jobs sendo processados
+
 Um carrinho é considerado abandonado quando estiver sem interação (adição ou remoção de produtos) há mais de 3 horas.
 
 - Quando este cenário ocorrer, o carrinho deve ser marcado como abandonado.

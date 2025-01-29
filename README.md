@@ -32,7 +32,7 @@ Realizar o clone do projeto:
 
 Parar os serviços do redis e do postgres para garantir que não estão rodando com outros serviços:
 ```
-  sudo systemctl stop postgresql garantir que não está em outro local
+  sudo systemctl stop postgresql
   sudo systemctl stop redis-server.service
 ```
 
@@ -65,7 +65,7 @@ O arquivo seeds.rb irá criar um usuário para que utilize nos proximos passos:
 Os endpoints descritos abaixo necessitam de autenticação, então deve-se passar um token para isso
 
 ### POST /users/tokens/sign_in
-Use esse endpoint para generar um token e usa-lo nos headers dos endpoints seguintes
+Use esse endpoint para gerar um token e usa-lo nos headers dos endpoints seguintes
 
 ROTA: `/users/tokens/sign_in`
 Payload:
@@ -108,7 +108,7 @@ Se não existir um carrinho para a sessão, criar o carrinho e salvar o ID do ca
 Adicionar o produto no carrinho e devolver o payload com a lista de produtos do carrinho atual.
 
 
-ROTA: `/cart`
+POST ROTA: `/cart`
 Payload:
 ```js
 {
@@ -144,7 +144,7 @@ Response
 ### 2. Listar itens do carrinho atual
 Criar um endpoint para listar os produtos no carrinho atual.
 
-ROTA: `/cart`
+GET ROTA: `/cart`
 
 Response:
 ```js
@@ -173,7 +173,7 @@ Response:
 ### 3. Alterar a quantidade de produtos no carrinho 
 Um carrinho pode ter _N_ produtos, se o produto já existir no carrinho, apenas a quantidade dele deve ser alterada
 
-ROTA: `/cart/add_item`
+POST ROTA: `/cart/add_item`
 
 Payload
 ```json
@@ -210,7 +210,7 @@ Response:
 
 Criar um endpoint para excluir um produto do do carrinho. 
 
-ROTA: `/cart/:product_id`
+DELETE ROTA: `/cart/:product_id`
 
 
 #### Detalhes adicionais:

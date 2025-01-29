@@ -36,4 +36,6 @@ end
 
 group :test do
   gem 'simplecov', require: false
+
+  gem 'shoulda-matchers', '~> 6.0'
 end

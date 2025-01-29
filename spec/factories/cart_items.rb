@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :cart_item do
     product { nil }
-    e { 'MyString' }
     cart { nil }
+    quantity { 0 }
   end
 end

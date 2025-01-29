@@ -14,6 +14,39 @@ class CartsController < ApplicationController
     end
   end
 
+  def show
+    cart = recovery_in_redis(current_devise_api_token.access_token)
+
+    result = ::Carts::Presenter.new(cart).call!
+
+    if result[:error]
+      render json: { error: result[:error] }, status: :unprocessable_entity
+    else
+      render json: result, status: :ok
+    end
+  end
+
+  def update
+    result = ::Carts::Updater.new(service_params).call!
+
+    if result[:error]
+      render json: { error: result[:error] }, status: :unprocessable_entity
+    else
+      render json: result, status: :ok
+    end
+  end
+
+  def delete
+    cart_id = recovery_in_redis(current_devise_api_token.access_token)
+    result = ::Carts::Destroyer.new(params[:product_id], cart_id).call!
+
+    if result[:error]
+      render json: { error: result[:error] }, status: :unprocessable_entity
+    else
+      render json: result, status: :ok
+    end
+  end
+
   private
 
   def service_params

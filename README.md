@@ -47,7 +47,7 @@ Rodar o comando abaixo para listar os containers e buscar o nome do container we
   docker container ls
 ```
 
-Nome do container é O nome do container é `tech-interview-backend-entry-level-main-web-1`
+O nome do container é `tech-interview-backend-entry-level-main-web-1`
 
 Executar o comando abaixo para acessar o container web e rodar os comandos:
 

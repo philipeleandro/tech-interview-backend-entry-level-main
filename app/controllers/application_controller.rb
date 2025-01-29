@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
 
   def save_in_redis(token, data)
     $redis.set(token, data)
-    $redis.expire(token, 1.hour)
+    $redis.expire(token, 3.hours)
   end
 
   def current_session

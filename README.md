@@ -116,7 +116,7 @@ Payload:
 ```js
 {
   "product_id": 1, // id do produto sendo adicionado
-  "quantity": 2, // quantidade de produto a ser adicionado
+  "quantity": 2 // quantidade de produto a ser adicionado
 }
 ```
 

@@ -56,9 +56,43 @@ Executar o comando abaixo para acessar o container web e rodar os comandos:
 ```
 
 O arquivo seeds.rb irá criar um usuário para que utilize nos proximos passos:
+```js
+    "email": "rd_station_test@test.com"
+    "password": "password"
 ```
-email: "rd_station_test@test.com"
-password: "password"
+
+## Observações
+Os endpoints descritos abaixo necessitam de autenticação, então deve-se passar um token para isso
+
+### POST /users/tokens/sign_in
+Use esse endpoint para generar um token e usa-lo nos headers dos endpoints seguintes
+
+ROTA: `/users/tokens/sign_in`
+Payload:
+```js
+{
+    "email": "rd_station_test@test.com"
+    "password": "password"
+}
+```
+
+Response body:
+```js
+  "token": "string",
+  "refresh_token": "string",
+  "expires_in": "integer",
+  "token_type": "string",
+  "resource_owner": {
+      "id": "integer",
+      "email": "string",
+      "created_at": "string",
+      "updated_at": "string"
+  }
+```
+
+Nos casos seguintes, passar a chave Authorization com o valor `Bearer "token"`. Exemplo:
+```js
+  { "Authorization": "Bearer 'token'"} // 'token' é o valor de retorno "token" na requisição da rota `/users/tokens/sign_in`
 ```
 
 ## O Desafio - Carrinho de compras

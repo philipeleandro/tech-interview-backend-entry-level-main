@@ -55,6 +55,11 @@ Executar o comando abaixo para acessar o container web e rodar os comandos:
   bundle exec rails db:seeds
 ```
 
+O arquivo seeds.rb irá criar um usuário para que utilize nos proximos passos:
+```
+email: "rd_station_test@test.com"
+password: "password"
+```
 
 ## O Desafio - Carrinho de compras
 O desafio consiste em uma API para gerenciamento do um carrinho de compras de e-commerce.

@@ -6,9 +6,9 @@ class Cart < ApplicationRecord
   validates_numericality_of :total_price, greater_than_or_equal_to: 0
 
   def mark_as_abandoned
-    return unless last_interaction_at < 1.hour.ago
+    return unless last_interaction_at < 3.hour.ago
 
-    update(abandoned?: true)
+    update!(abandoned?: true)
   end
 
   def remove_if_abandoned

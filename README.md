@@ -47,12 +47,15 @@ Rodar o comando abaixo para listar os containers e buscar o nome do container we
   docker container ls
 ```
 
+Nome do container é O nome do container é `tech-interview-backend-entry-level-main-web-1`
+
 Executar o comando abaixo para acessar o container web e rodar os comandos:
+
 ```
   docker exec -it nome_do_container_web bash
   bundle exec rails db:create
   bundle exec rails db:migrate
-  bundle exec rails db:seeds
+  bundle exec rails db:seed
 ```
 
 O arquivo seeds.rb irá criar um usuário para que utilize nos proximos passos:

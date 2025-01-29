@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   post '/cart', to: 'carts#create'
-  post '/cart/add_items', to: 'carts#update'
+  post '/cart/add_item', to: 'carts#update'
   get '/cart', to: 'carts#show'
   delete '/cart/:product_id', to: 'carts#delete'
 end

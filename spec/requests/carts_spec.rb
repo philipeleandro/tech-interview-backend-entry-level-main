@@ -49,10 +49,10 @@ RSpec.describe '/carts' do
     end
   end
 
-  describe 'POST /cart/add_items' do
+  describe 'POST /cart/add_item' do
     subject(:request) do
-      post '/cart/add_items', headers: headers, params: { product_id: product.id, quantity: 2 },
-                              as: :json
+      post '/cart/add_item', headers: headers, params: { product_id: product.id, quantity: 2 },
+                             as: :json
     end
 
     let(:cart) { Cart.create(total_price: 10) }

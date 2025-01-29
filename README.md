@@ -15,6 +15,47 @@ O que gostaríamos de ver:
 - A adição de novos testes é sempre bem-vinda.
 - Você deve enviar para nós o link do repositório público com a aplicação desenvolvida (GitHub, BitBucket, etc.).
 
+## Como executar o projeto
+Requisitos:
+- Docker
+- Docker-compose
+
+### Executando a app com o docker
+Seguir os comandos abaixo para rodar a app com docker:
+
+Realizar o clone do projeto:
+```
+  `git clone git@github.com:philipeleandro/tech-interview-backend-entry-level-main.git`
+  ou `git clone https://github.com/philipeleandro/tech-interview-backend-entry-level-main.git`
+  cd tech-interview-backend-entry-level-main
+````
+
+Parar os serviços do redis e do postgres para garantir que não estão rodando com outros serviços:
+```
+  sudo systemctl stop postgresql garantir que não está em outro local
+  sudo systemctl stop redis-server.service
+```
+
+Buildar a imagem do docker-compose e subir os containers:
+```
+  docker compose build
+  docker compose up web db redis sidekiq
+```
+
+Rodar o comando abaixo para listar os containers e buscar o nome do container web:
+```
+  docker container ls
+```
+
+Executar o comando abaixo para acessar o container web e rodar os comandos:
+```
+  docker exec -it nome_do_container_web bash
+  bundle exec rails db:create
+  bundle exec rails db:migrate
+  bundle exec rails db:seeds
+```
+
+
 ## O Desafio - Carrinho de compras
 O desafio consiste em uma API para gerenciamento do um carrinho de compras de e-commerce.
 
@@ -126,7 +167,7 @@ Response:
 }
 ```
 
-### 3. Remover um produto do carrinho 
+### 4. Remover um produto do carrinho 
 
 Criar um endpoint para excluir um produto do do carrinho. 
 
@@ -188,31 +229,6 @@ A aplicação já possui um Dockerfile, que define como a aplicação deve ser c
 - rails 7.1.3.2
 - postgres 16
 - redis 7.0.15
-
-### Como executar o projeto
-
-## Executando a app sem o docker
-Dado que todas as as ferramentas estão instaladas e configuradas:
-
-Instalar as dependências do:
-```bash
-bundle install
-```
-
-Executar o sidekiq:
-```bash
-bundle exec sidekiq
-```
-
-Executar projeto:
-```bash
-bundle exec rails server
-```
-
-Executar os testes:
-```bash
-bundle exec rspec
-```
 
 ### Como enviar seu projeto
 Salve seu código em um versionador de código (GitHub, GitLab, Bitbucket) e nos envie o link publico. Se achar necessário, informe no README as instruções para execução ou qualquer outra informação relevante para correção/entendimento da sua solução.

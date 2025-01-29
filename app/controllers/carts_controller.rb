@@ -2,7 +2,7 @@
 
 class CartsController < ApplicationController
   before_action :authenticate_devise_api_token!
-  def add_item
+  def create
     result = ::Carts::Creator.new(service_params).call!
 
     if result[:error]

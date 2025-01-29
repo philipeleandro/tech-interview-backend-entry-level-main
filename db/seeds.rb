@@ -10,6 +10,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# Criar usuario
+User.create(email: 'teste@teste.com', password: '123456')
+
 Product.create([
                  {
                    name: 'Samsung Galaxy S24 Ultra',

@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Product do
+  describe 'associations' do
+    it { is_expected.to have_many(:cart_items) }
+  end
+
   context 'when validating' do
     it 'validates presence of name' do
       product = described_class.new(price: 100)

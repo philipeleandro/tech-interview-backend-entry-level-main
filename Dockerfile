@@ -51,8 +51,13 @@ RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER rails:rails
 
+USER root
+
 RUN mkdir -p /rails/log /rails/tmp && \
-    chmod -R 777 .
+    touch /rails/log/development.log && \
+    chmod -R 777 /rails/log /rails/tmp /rails/db
+
+USER rails:rails
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]

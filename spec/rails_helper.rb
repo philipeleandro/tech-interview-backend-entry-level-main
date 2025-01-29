@@ -44,6 +44,14 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.before(:each) do
+    ActiveJob::Base.queue_adapter = :test
+  end
+
+  config.before(:each) do
+    $redis.flushdb # Limpa o Redis no início de cada teste
+  end
+
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 

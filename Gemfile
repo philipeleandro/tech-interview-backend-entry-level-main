@@ -35,7 +35,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'simplecov', require: false
-
+  gem 'rspec-sidekiq'
   gem 'shoulda-matchers', '~> 6.0'
+  gem 'simplecov', require: false
 end

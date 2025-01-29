@@ -34,6 +34,20 @@ services:
         - REDIS_URL=redis://redis:6379/0
         stdin_open: true
         tty: true
+    sidekiq:
+        build:
+            context: .
+        command: bundle exec sidekiq
+        volumes:
+            - .:/rails
+        depends_on:
+            - redis
+            - db
+            - web
+        environment:
+            - DATABASE_URL=postgresql://postgres:password@db:5432/myapp_development
+            - REDIS_URL=redis://redis:6379/0
+
     test:
         build: .
         command: bash -c "bundle exec rails db:create && bundle exec rspec"

@@ -11,7 +11,7 @@
 #   end
 
 # Criar usuario
-User.create(email: 'teste@teste.com', password: '123456')
+User.create(email: 'rd_station_test@test.com', password: 'password')
 
 Product.create([
                  {

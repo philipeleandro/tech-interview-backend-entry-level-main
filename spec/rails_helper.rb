@@ -49,7 +49,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    $redis.flushdb # Limpa o Redis no início de cada teste
+    RedisApp.instance.flushdb # Limpa o Redis no início de cada teste
   end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.

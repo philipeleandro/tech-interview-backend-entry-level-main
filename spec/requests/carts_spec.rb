@@ -13,7 +13,7 @@ RSpec.describe '/carts' do
   before do
     cart_item
 
-    $redis.set(token, cart.id)
+    RedisApp.instance.set(token, cart.id)
   end
 
   describe 'POST /cart' do

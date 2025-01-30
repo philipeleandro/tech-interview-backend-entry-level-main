@@ -93,7 +93,7 @@ Response body:
   }
 ```
 
-Nos casos seguintes, passar a chave Authorization nos headers com o valor `Bearer "token"`. Exemplo:
+Nos endpoints listados abaixo referente ao Carrinho de Compra, passar a chave `Authorization` nos headers da requisição com o valor `Bearer "token"`. Exemplo:
 ```js
   { "Authorization": "Bearer 'token'"} // 'token' é o valor de retorno "token" na requisição da rota `/users/tokens/sign_in`
 ```
